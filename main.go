@@ -104,7 +104,7 @@ func run(config Config, id int, result chan WorkerResult) {
 	var stdout, stderr bytes.Buffer
 
 	values := make(map[string]string)
-
+	values["worker_id"] = strconv.Itoa(id)
 	for idx, inputFile := range config.Fuzz.InputFiles {
 		baseName := path.Base(inputFile)
 		target := path.Join(config.Fuzz.OutputDir, baseName+"."+strconv.Itoa(id))
