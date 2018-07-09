@@ -53,7 +53,8 @@ func readConfig() Config {
 func eval(orig string, values map[string]string) string {
 	txt := orig
 	for k, v := range values {
-		txt = strings.Replace(txt, "{{"+k+"}}", v, -1)
+		old := "{{" + k + "}}"
+		txt = strings.Replace(txt, old, v, -1)
 	}
 	return txt
 }
@@ -119,7 +120,7 @@ func run(config Config, id int, result chan WorkerResult) {
 		}
 
 		ioutil.WriteFile(target, stdout.Bytes(), 0666)
-		values [fmt.Sprintf("intput_%d", idx)] = target
+		values [fmt.Sprintf("input_%d", idx)] = target
 	}
 
 	// parse template

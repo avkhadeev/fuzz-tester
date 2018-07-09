@@ -8,9 +8,9 @@
     "binary": "/bin/sh",
     "params": ["/Volumes/Work/src/go/src/nxlog.co/fuzz-tester/tst.sh", "-c", "{{config}}"],
     "config": {
-      "template": "nxlog.conf.template",
-      "output-dir": "/Volumes/work/config"
+      "template": "/Volumes/Work/nxlog.conf.template",
+      "output-dir": "/Volumes/Work/config"
     }
   },
-  "queue-len": 30
+  "queue-len": 1
 }
