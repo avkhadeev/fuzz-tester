@@ -1,0 +1,16 @@
+{
+  "fuzz": {
+    "input-files": ["/Volumes/Work/src/C/radamsa/README.md"],
+    "radamsa": "/Volumes/Work/src/C/radamsa/bin/radamsa",
+    "output-dir": "/Volumes/Work/shm"
+  },
+  "runner": {
+    "binary": "/bin/sh",
+    "params": ["/Volumes/Work/src/go/src/nxlog.co/fuzz-tester/tst.sh", "-c", "{{config}}"],
+    "config": {
+      "template": "nxlog.conf.template",
+      "output-dir": "/Volumes/work/config"
+    }
+  },
+  "queue-len": 30
+}
