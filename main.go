@@ -70,7 +70,9 @@ func prepareConfig(config Config, values map[string]string, id int) string {
 	txt := eval(string(content), values)
 
 	newFilename := path.Join(config.Runner.Config.OutputDir, fmt.Sprintf("%d.conf", id))
-	ioutil.WriteFile(newFilename, []byte(txt), 0600)
+	log.Printf("Config file: %v", newFilename)
+	log.Printf("Config: %v", txt)
+	ioutil.WriteFile(newFilename, []byte(txt), 0666)
 	return newFilename
 }
 
