@@ -137,7 +137,7 @@ func run(config Config, id int, result chan WorkerResult) {
 	}
 
 	cmd := exec.Command(config.Runner.Binary, args...)
-
+	log.Printf("#%d exec %v", id, config.Runner.Binary)
 	cmd.Start()
 	if err := cmd.Wait(); err != nil {
 
@@ -150,6 +150,7 @@ func run(config Config, id int, result chan WorkerResult) {
 			// an ExitStatus() method with the same signature.
 			if status, ok := exiterr.Sys().(syscall.WaitStatus); ok {
 				if status.ExitStatus() == 127 {
+					log.Printf("SEGFAULTS")
 					result <- WorkerResult{Id: id, Rc: status.ExitStatus()}
 				}
 				return
